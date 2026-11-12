@@ -1,0 +1,11 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check
+        run: |
+          if [ -f FAIL ]; then echo "A FAIL file is here: failing on purpose for the GitHubVoice tests"; exit 1; fi
+          echo "All good"
